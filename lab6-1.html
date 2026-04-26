@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Öğrenci Not Hesaplama</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="contactform.html">Form</a></li>
+        <li>
+          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+            <option value="" selected disabled>Lab Seçiniz</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+            <option value="5">Lab 5</option>
+            <option value="6-1">Lab 6.1</option>
+            <option value="6-2">Lab 6.2</option>
+            <option value="7">Lab 7</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Uygulama-1</span>
+      <h1>Öğrenci Not Hesaplama</h1>
+      <p>Not hesaplama modülü.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container" style="max-width: 500px;">
+      
+      <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem; border-bottom: none; padding-bottom: 0;">Not Girişi</h2>
+        <form id="gradeForm" onsubmit="calculateGrade(event)">
+          <div class="form-group">
+            <input type="text" id="studentName" class="form-control" placeholder="Filiz Akın" required>
+          </div>
+          <div class="form-group">
+            <input type="number" id="midtermGrade" class="form-control" placeholder="60" min="0" max="100" required>
+          </div>
+          <div class="form-group">
+            <input type="number" id="finalGrade" class="form-control" placeholder="60" min="0" max="100" required>
+          </div>
+          <button type="submit" class="btn btn-ghost" style="width: 100%; border-color: var(--border-color); background-color: var(--bg-color);">Hesapla</button>
+        </form>
+      </div>
+
+      <div id="resultBox" style="display: none; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
+        <h3 id="resName" style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-primary);">Filiz Akın</h3>
+        <p style="margin-bottom: 0.2rem; color: var(--text-primary); font-size: 0.95rem;">Ortalama: <span id="resAvg"></span></p>
+        <p style="margin-bottom: 0.2rem; color: var(--text-primary); font-size: 0.95rem;">Harf Notu: <span id="resLetter"></span></p>
+        <p style="margin-bottom: 0; color: var(--text-primary); font-size: 0.95rem;">Durum: <span id="resStatus"></span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+    </div>
+  </footer>
+
+  <script>
+    function calculateGrade(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('studentName').value;
+      const vize = parseFloat(document.getElementById('midtermGrade').value);
+      const final = parseFloat(document.getElementById('finalGrade').value);
+      
+      const avg = (vize * 0.4) + (final * 0.6);
+      
+      let letter = '';
+      if (avg >= 90) letter = 'AA';
+      else if (avg >= 85) letter = 'BA';
+      else if (avg >= 80) letter = 'BB';
+      else if (avg >= 75) letter = 'CB';
+      else if (avg >= 70) letter = 'CC';
+      else if (avg >= 65) letter = 'DC';
+      else if (avg >= 60) letter = 'DD';
+      else if (avg >= 50) letter = 'FD';
+      else letter = 'FF';
+      
+      const status = avg >= 50 ? 'Geçti' : 'Kaldı';
+      
+      document.getElementById('resName').textContent = name;
+      document.getElementById('resAvg').textContent = avg.toFixed(2);
+      document.getElementById('resLetter').textContent = letter;
+      document.getElementById('resStatus').textContent = status;
+      
+      document.getElementById('resultBox').style.display = 'block';
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

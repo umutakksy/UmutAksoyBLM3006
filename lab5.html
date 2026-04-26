@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teknoloji Topluluğu Etkinliği - Lab Position</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       LAB POSITION - CSS Position Örneği
+       Etkinlik Duyuru Kartı
+    ============================================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg:        #f5f1ea;
+      --surface:   #ffffff;
+      --border:    #e0dbd2;
+      --accent:    #5b4fb3;
+      --accent2:   #7b63d4;
+      --text:      #2d2d2d;
+      --muted:     #7a7570;
+      --light:     #f9f7f3;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─────────────────────────────────────────
+       BAŞLANGIÇ BUTON (Fixed) - Zorunlu
+    ───────────────────────────────────────── */
+    .go-home-btn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 200;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(91, 79, 179, 0.25);
+      transition: all 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .go-home-btn:hover {
+      cursor: grab;
+      background: var(--accent2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(91, 79, 179, 0.35);
+    }
+
+    .go-home-btn:active {
+      transform: translateY(-1px);
+    }
+
+    /* ─────────────────────────────────────────
+       ANA SAYFA İÇERİĞİ
+    ───────────────────────────────────────── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    /* ─────────────────────────────────────────
+       KART KONTEYNER (position: relative) - Zorunlu
+    ───────────────────────────────────────── */
+    .announcement-card {
+      position: relative;
+      background: linear-gradient(135deg, #e8e3f5 0%, #f0e8fa 100%);
+      border-radius: 20px;
+      padding: 25px 50px 60px 50px;
+      box-shadow: 0 20px 60px rgba(91, 79, 179, 0.12);
+      border: 2px solid rgba(123, 99, 212, 0.2);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .announcement-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123, 99, 212, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 5;
+    }
+
+    .card-content h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+
+    /* ─────────────────────────────────────────
+       POZİSYONLANMIŞ BADGE'LER (position: absolute) - Zorunlu
+    ───────────────────────────────────────── */
+    
+    /* Badge 1: Başlık ile aynı hizada */
+    .badge-free {
+      position: absolute;
+      top: 35px;
+      left: 50px;
+      background: rgba(255, 245, 145, 0.7);
+      color: #1a1a1a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 100;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-free:hover {
+      cursor: help;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Badge 2: Alt Sağ - Çapraz */
+    .badge-location {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      background: #ff9999;
+      color: #5a0000;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      z-index: 50;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .badge-location:hover {
+      cursor: all-scroll;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      animation: none;
+    }
+
+    /* Badge 3: Konum - Son Kayıt üzerinde ve çapraz */
+    .badge-location-top {
+      position: absolute;
+      bottom: 60px;
+      right: 20px;
+      background: #ff6b6b;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      z-index: 60;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: rotate(-15deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .badge-location-top:hover {
+      cursor: pointer;
+      transform: rotate(-15deg) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ─────────────────────────────────────────
+       SABİT ÖĞELER (position: fixed) - Zorunlu
+    ───────────────────────────────────────── */
+    .floating-helper {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      padding: 16px 28px;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(91, 79, 179, 0.3);
+      z-index: 100;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      animation: bounce 1.2s infinite;
+    }
+
+    .floating-helper:hover {
+      cursor: cell;
+      background: var(--accent2);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(91, 79, 179, 0.4);
+      animation: none;
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 2px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--accent2);
+    }
+
+    /* ─────────────────────────────────────────
+       ANIMASYON #1 - Transition
+    ───────────────────────────────────────── */
+    .animated-text {
+      animation: slideInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       ANIMASYON #2 - Keyframe
+    ───────────────────────────────────────── */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(91, 79, 179, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(91, 79, 179, 0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(-5px) scale(1);
+      }
+      50% {
+        transform: translateY(5px) scale(1.05);
+      }
+    }
+
+    .pulse-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    .register-btn.bounce-animation {
+      animation: bounce 1.2s infinite;
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
+      }
+
+      .announcement-card {
+        padding: 40px 25px;
+      }
+
+      .announcement-card h2 {
+        font-size: 1.6rem;
+      }
+
+      .badge-free {
+        left: 15px;
+        top: 15px;
+        font-size: 0.7rem;
+        padding: 6px 12px;
+      }
+
+      .badge-date {
+        right: 15px;
+        top: 15px;
+        font-size: 0.75rem;
+        padding: 8px 14px;
+      }
+
+      .badge-location {
+        right: 15px;
+        bottom: 15px;
+        font-size: 0.75rem;
+        padding: 8px 14px;
+      }
+
+      .badge-location-top {
+        bottom: 50px;
+        right: 10px;
+        font-size: 0.65rem;
+        padding: 6px 10px;
+      }
+
+      .go-home-btn {
+        left: 12px;
+        top: 12px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+
+      .floating-helper {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SABİT BUTON: ANA SAYFAYA DÖN & LAB GEÇİŞİ -->
+  <div style="position: fixed; top: 24px; left: 24px; z-index: 200; display: flex; gap: 10px; align-items: center;">
+    <button class="go-home-btn" style="position: static; margin: 0;" onclick="window.location.href='index.html'">← Ana Sayfaya Dön</button>
+    <select id="labSelector" style="padding: 12px 24px; border-radius: 24px; border: none; background: var(--surface); color: var(--accent); font-size: 0.875rem; font-weight: 600; cursor: pointer; box-shadow: 0 8px 24px rgba(91, 79, 179, 0.25);">
+      <option value="" selected disabled>Lab Seçiniz...</option>
+      <option value="2">Lab 2</option>
+      <option value="3">Lab 3</option>
+      <option value="5">Lab 5</option>
+      <option value="6-1">Lab 6.1</option>
+      <option value="6-2">Lab 6.2</option>
+      <option value="7">Lab 7</option>
+    </select>
+  </div>
+
+  <!-- ANA İÇERİK -->
+  <main class="container">
+    
+    <!-- KART: position: relative konteyner -->
+    <div class="announcement-card">
+      
+      <!-- Badge: Başlık ile aynı hizada -->
+      <span class="badge-free">Ücretsiz</span>
+      
+      <!-- Badge: Son Kayıt (float animasyonlu) -->
+      <span class="badge-location">Son Kayıt</span>
+
+      <!-- Kart İçeriği -->
+      <div class="card-content">
+        <h2>Yapay Zeka & Web Teknolojileri Seminer</h2>
+        <p>
+          Bu örnek sayfada; CSS position özelliklerini kullanarak tek bir duyuru kartı üzerinde 
+          relative, absolute, fixed, z-index, hover, cursor ve animasyon mantığını birlikte 
+          göstermektedir. Sayfayı tam sayfa karmaşık bir site olarak değil, bütüncül bir 
+          arayüz bileşeni olarak tasarlanmıştır.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Web Laboratuvarı - Hafta 5 | LAB Position Çalışması</p>
+    <p>2025 © Teknoloji Topluluğu | Tüm Hakları Saklıdır</p>
+  </footer>
+
+  <!-- SABİT BUTON: Yardımcı İletişim -->
+  <button class="floating-helper" onclick="alert('İletişim için: teknoloji@universite.edu')">💬 Yardımcı Menü</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

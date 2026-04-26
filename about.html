@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımda — Abdullah Görgen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html" class="active">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="contactform.html">Form</a></li>
+        <li>
+          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+            <option value="" selected disabled>Lab Seçiniz</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+            <option value="5">Lab 5</option>
+            <option value="6-1">Lab 6.1</option>
+            <option value="6-2">Lab 6.2</option>
+            <option value="7">Lab 7</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SAYFA BAŞLIĞI -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Ben Kimim?</span>
+      <h1>Hakkımda</h1>
+      <p>Bilgisayar Mühendisliği öğrencisi. Teknoloji tutkunu ve sürekli öğrenmeye açık biri.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container">
+      <div class="card">
+        <h2>Kendimden Kısaca</h2>
+        <p>Merhaba, ben Abdullah Görgen. Marmara Üniversitesi Bilgisayar Mühendisliği bölümünde eğitimime devam ediyorum. Teknolojiye olan ilgim beni her gün yeni şeyler öğrenmeye teşvik ediyor.</p>
+        <p>Yazılım dünyasında kendimi geliştirmeyi, temiz ve modüler kodlar yazarak kullanışlı sistemler tasarlamayı hedefliyorum. Derin öğrenme ve siber güvenlik odaklandığım başlıca alanlar arasında yer alıyor.</p>
+        
+        <h2 style="margin-top: 2rem;">Eğitim</h2>
+        <ul class="styled-list">
+          <li>Marmara Üniversitesi - Bilgisayar Mühendisliği (Lisans)</li>
+        </ul>
+
+        <h2 style="margin-top: 2rem;">Hedeflerim</h2>
+        <ul class="styled-list">
+          <li>Mevcut projelerimi en iyi şekilde tamamlamak.</li>
+          <li>Yeni ve modern web teknolojilerini projelerime entegre etmek.</li>
+          <li>Açık kaynak sistemlere ve projelere katkıda bulunmak.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+    </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

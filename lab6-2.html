@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birim Dönüştürücü</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="contactform.html">Form</a></li>
+        <li>
+          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+            <option value="" selected disabled>Lab Seçiniz</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+            <option value="5">Lab 5</option>
+            <option value="6-1">Lab 6.1</option>
+            <option value="6-2">Lab 6.2</option>
+            <option value="7">Lab 7</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Uygulama-2</span>
+      <h1>Birim Dönüştürücü</h1>
+      <p>Farklı mühendislik birimlerini birbirine dönüştüren uygulama.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container" style="max-width: 500px;">
+      
+      <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem; border-bottom: none; padding-bottom: 0;">Birim Dönüştürücü</h2>
+        <form id="convertForm" onsubmit="convertUnits(event)">
+          <div class="form-group">
+            <label class="form-label" style="font-weight: 400;" for="inputValue">Değer Giriniz:</label>
+            <input type="number" id="inputValue" step="any" class="form-control" placeholder="50" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" style="font-weight: 400;" for="conversionType">Dönüşüm Tipi:</label>
+            <select id="conversionType" class="form-control" required style="cursor: pointer;">
+              <option value="c_to_f">Celsius -> Fahrenheit</option>
+              <option value="f_to_c">Fahrenheit -> Celsius</option>
+              <option value="m_to_km">Metre -> Kilometre</option>
+              <option value="km_to_m">Kilometre -> Metre</option>
+              <option value="kg_to_g">Kilogram -> Gram</option>
+              <option value="g_to_kg">Gram -> Kilogram</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Hesapla</button>
+        </form>
+      </div>
+
+      <div id="convertResultBox" style="display: none; background-color: #d1e7dd; border: 1px solid #badbcc; border-radius: var(--radius-sm); padding: 1rem; text-align: center;">
+        <h3 style="margin: 0; color: #0f5132; font-size: 1rem; font-weight: 600;">Sonuç: <span id="convertResult"></span></h3>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+    </div>
+  </footer>
+
+  <script>
+    function convertUnits(e) {
+      e.preventDefault();
+      
+      const val = parseFloat(document.getElementById('inputValue').value);
+      const type = document.getElementById('conversionType').value;
+      
+      let res = 0;
+      
+      switch(type) {
+        case 'c_to_f':
+          res = (val * 9/5) + 32;
+          break;
+        case 'f_to_c':
+          res = (val - 32) * 5/9;
+          break;
+        case 'm_to_km':
+          res = val / 1000;
+          break;
+        case 'km_to_m':
+          res = val * 1000;
+          break;
+        case 'kg_to_g':
+          res = val * 1000;
+          break;
+        case 'g_to_kg':
+          res = val / 1000;
+          break;
+      }
+      
+      let displayRes = res;
+      if (!Number.isInteger(res)) {
+         displayRes = res.toFixed(3);
+         displayRes = parseFloat(displayRes);
+      }
+      
+      document.getElementById('convertResult').textContent = displayRes;
+      document.getElementById('convertResultBox').style.display = 'block';
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

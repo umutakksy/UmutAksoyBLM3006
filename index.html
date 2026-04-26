@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdullah Görgen — Kişisel Portfolyo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="contactform.html">Form</a></li>
+        <li>
+          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+            <option value="" selected disabled>Lab Seçiniz</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+            <option value="5">Lab 5</option>
+            <option value="6-1">Lab 6.1</option>
+            <option value="6-2">Lab 6.2</option>
+            <option value="7">Lab 7</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="index-hero">
+    <div class="container">
+      <div class="index-hero-content">
+        <span class="eyebrow">Kişisel Portfolyo — 2026</span>
+        <h1>Abdullah<br/>Görgen</h1>
+        <p class="subtitle">
+          Bilgisayar Mühendisliği öğrencisi. Derin öğrenme, siber güvenlik
+          ve Linux sistem yönetimi üzerine çalışıyor.
+        </p>
+        <div class="hero-actions">
+          <a href="lab7.html" class="btn btn-primary" style="background-color: #0d6efd; color: white;">Hafta 7 Uygulamasına Git</a>
+          <a href="about.html" class="btn btn-ghost">Hakkımda →</a>
+        </div>
+
+        <!-- Hızlı bilgiler -->
+        <div class="info-grid">
+          <div class="info-cell">
+            <div class="label">Üniversite</div>
+            <div class="value">Marmara Üniversitesi</div>
+          </div>
+          <div class="info-cell">
+            <div class="label">Bölüm</div>
+            <div class="value">Bilgisayar Mühendisliği</div>
+          </div>
+          <div class="info-cell">
+            <div class="label">Odak Alanları</div>
+            <div class="value">Derin Öğrenme · Siber Güvenlik · Linux</div>
+          </div>
+          <div class="info-cell">
+            <div class="label">Ders</div>
+            <div class="value">Web Programlama</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖĞRENME HEDEFLERİ -->
+  <section style="padding: 80px 0; border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section">
+        <p class="section-label">Hedefler</p>
+        <h2>Öğrenme Hedeflerim</h2>
+        <ol class="ordered-list">
+          <li>HTML ve CSS temellerini öğrenmek</li>
+          <li>İşletim sistemi simülatörü projemi ilerletmek</li>
+          <li>Görüntü işleme ve model eğitimi konularında derinleşmek</li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <p class="section-label">Kaynaklar</p>
+        <h2>Faydalı Bağlantılar</h2>
+        <div class="card">
+          <a href="https://developer.mozilla.org/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+            <span>MDN Web Docs</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://www.w3schools.com/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+            <span>W3Schools</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://github.com/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+            <span>GitHub</span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

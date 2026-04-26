@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İletişim — Abdullah Görgen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html" class="active">İletişim</a></li>
+        <li><a href="contactform.html">Form</a></li>
+        <li>
+          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+            <option value="" selected disabled>Lab Seçiniz</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+            <option value="5">Lab 5</option>
+            <option value="6-1">Lab 6.1</option>
+            <option value="6-2">Lab 6.2</option>
+            <option value="7">Lab 7</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SAYFA BAŞLIĞI -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Bağlantı Kur</span>
+      <h1>İletişim Bilgilerim</h1>
+      <p>Benimle aşağıdaki kanallardan iletişim kurabilirsiniz.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container">
+        
+      <div class="two-col" style="margin-bottom: 40px;">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <span>E-posta</span>
+            <a href="mailto:ogrenci@example.com">ogrenci@example.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-info">
+            <span>Telefon</span>
+            <a href="tel:+905551112233">+90 555 111 22 33</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💻</div>
+          <div class="contact-info">
+            <span>GitHub</span>
+            <a href="https://github.com/abdullah" target="_blank">abdullah</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🔗</div>
+          <div class="contact-info">
+            <span>LinkedIn</span>
+            <a href="#" target="_blank">Profilim</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Sık Sorulan Sorular</h2>
+        <div class="styled-list" style="gap: 16px;">
+          <div class="faq-item">
+            <div class="faq-question">Mesajlara ne kadar sürede dönüş yapıyorsunuz?</div>
+            <div class="faq-answer">Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Projelerde iş birliğine açık mısınız?</div>
+            <div class="faq-answer">Evet, özellikle açık kaynak projelerinde, veri bilimi ve siber güvenlik araştırmalarında iş birliklerine açığım.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+    </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

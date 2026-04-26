@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Lab Uygulaması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #333;
+        }
+
+        /* Wrapper - Ana Kapsayıcı (100vh, flex column) */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+
+        /* 1) NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10vh;
+            background: #ffffff;
+            padding: 0 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4a7ba7;
+        }
+
+        /* 2) HERO SECTION */
+        .hero {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 30vh;
+            padding: 40px;
+            gap: 40px;
+            background: #ffffff;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+            gap: 15px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .hero-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .hero-button {
+            align-self: flex-start;
+            padding: 12px 30px;
+            background: #4a7ba7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #3a5a87;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 18px;
+            min-width: 300px;
+        }
+
+        /* 3) KARTLAR BÖLÜMÜ */
+        .cards-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            height: 30vh;
+            padding: 40px;
+            background: #ffffff;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            align-content: flex-start;
+        }
+
+        .card {
+            flex: 0 1 calc(25% - 15px);
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #666;
+            flex: 1;
+        }
+
+        .card-button {
+            padding: 10px 20px;
+            background: #4a7ba7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .card-button:hover {
+            background: #3a5a87;
+        }
+
+        /* 4) FLEX GROW UYGULAMASI */
+        .flex-grow-section {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            height: 20vh;
+            padding: 40px;
+            background: #ffffff;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            align-items: stretch;
+        }
+
+        .flex-grow-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .box1 {
+            flex-grow: 1;
+            background: #5b8fc7;
+        }
+
+        .box2 {
+            flex-grow: 2;
+            background: #7cb342;
+        }
+
+        .box3 {
+            flex-grow: 1;
+            background: #f4a460;
+        }
+
+        .box-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 5) FOOTER */
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            background: #333;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Info Tags Styling */
+        .info-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #f0f0f0;
+            color: #666;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .card {
+                flex: 0 1 calc(33.33% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 0 1 calc(50% - 15px);
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .flex-grow-section {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 1) NAVBAR -->
+        <nav class="navbar">
+            <div class="logo">LOGO</div>
+            <div class="nav-links" style="list-style: none;">
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#services">Dersler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+                <li>
+                  <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid #ddd; background: #fff; color: #333; font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+                    <option value="" selected disabled>Lab Seçiniz</option>
+                    <option value="2">Lab 2</option>
+                    <option value="3">Lab 3</option>
+                    <option value="5">Lab 5</option>
+                    <option value="6-1">Lab 6.1</option>
+                    <option value="6-2">Lab 6.2</option>
+                    <option value="7">Lab 7</option>
+                  </select>
+                </li>
+            </div>
+        </nav>
+
+        <!-- 2) HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Hero Başlık</h1>
+                <p class="hero-text">Açıklama metni</p>
+                <button class="hero-button">Buton</button>
+                <div class="info-tags">
+                    <span class="tag">flex-direction: row</span>
+                    <span class="tag">height: 30vh</span>
+                    <span class="tag">align-items: stretch</span>
+                </div>
+            </div>
+            <div class="hero-image">Görsel Kutusu</div>
+        </section>
+
+        <!-- 3) KARTLAR BÖLÜMÜ -->
+        <section style="padding: 20px 40px;">
+            <div class="section-title">Kartlar Bölümü</div>
+            <div class="info-tags" style="margin-bottom: 20px;">
+                <span class="tag">multiple items</span>
+                <span class="tag">flex layout + wrap</span>
+            </div>
+
+            <div class="cards-section">
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Kart Başlığı</div>
+                    <div class="card-text">Kısa açıklama</div>
+                    <button class="card-button">Buton</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) FLEX GROW UYGULAMASI -->
+        <section style="padding: 20px 40px;">
+            <div class="section-title">Flex Grow Uygulaması</div>
+            <div class="info-tags" style="margin-bottom: 20px;">
+                <span class="tag">flex-grow</span>
+                <span class="tag">height: 20vh</span>
+                <span class="tag">stretch (esneme)</span>
+            </div>
+
+            <div class="flex-grow-section">
+                <div class="flex-grow-box box1">
+                    <div class="box-label">1 Kutu</div>
+                    <div class="tag" style="background: rgba(255,255,255,0.3); color: white;">flex-grow: 1</div>
+                </div>
+                <div class="flex-grow-box box2">
+                    <div class="box-label">2 Kutu</div>
+                    <div class="tag" style="background: rgba(255,255,255,0.3); color: white;">flex-grow: 2</div>
+                </div>
+                <div class="flex-grow-box box3">
+                    <div class="box-label">3 Kutu</div>
+                    <div class="tag" style="background: rgba(255,255,255,0.3); color: white;">flex-grow: 1</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) FOOTER -->
+        <footer class="footer">
+            © 2026 - Temel Flexbox Örneği
+        </footer>
+    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const labSelector = document.getElementById('labSelector');
+      if (labSelector) {
+        labSelector.addEventListener('change', function() {
+          if (this.value) {
+            window.location.href = `lab${this.value}.html`;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
