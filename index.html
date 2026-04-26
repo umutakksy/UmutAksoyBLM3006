@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdullah Görgen — Kişisel Portfolyo</title>
+  <title>Umut AKSOY — Kişisel Portfolyo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <a href="index.html" class="nav-logo">UA<span>.</span></a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Ana Sayfa</a></li>
         <li><a href="about.html">Hakkımda</a></li>
@@ -19,7 +19,7 @@
         <li><a href="contact.html">İletişim</a></li>
         <li><a href="contactform.html">Form</a></li>
         <li>
-          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+          <select id="labSelector" class="lab-selector">
             <option value="" selected disabled>Lab Seçiniz</option>
             <option value="2">Lab 2</option>
             <option value="3">Lab 3</option>
@@ -38,13 +38,13 @@
     <div class="container">
       <div class="index-hero-content">
         <span class="eyebrow">Kişisel Portfolyo — 2026</span>
-        <h1>Abdullah<br/>Görgen</h1>
+        <h1>Umut<br/>AKSOY</h1>
         <p class="subtitle">
           Bilgisayar Mühendisliği öğrencisi. Derin öğrenme, siber güvenlik
           ve Linux sistem yönetimi üzerine çalışıyor.
         </p>
         <div class="hero-actions">
-          <a href="lab7.html" class="btn btn-primary" style="background-color: #0d6efd; color: white;">Hafta 7 Uygulamasına Git</a>
+          <a href="lab7.html" class="btn btn-primary">Hafta 7 Uygulamasına Git</a>
           <a href="about.html" class="btn btn-ghost">Hakkımda →</a>
         </div>
 
@@ -72,7 +72,7 @@
   </section>
 
   <!-- ÖĞRENME HEDEFLERİ -->
-  <section style="padding: 80px 0; border-top: 1px solid var(--border);">
+  <section class="learning-section">
     <div class="container">
       <div class="section">
         <p class="section-label">Hedefler</p>
@@ -88,15 +88,15 @@
         <p class="section-label">Kaynaklar</p>
         <h2>Faydalı Bağlantılar</h2>
         <div class="card">
-          <a href="https://developer.mozilla.org/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+          <a href="https://developer.mozilla.org/" target="_blank" class="link-row">
             <span>MDN Web Docs</span>
             <span class="arrow">↗</span>
           </a>
-          <a href="https://www.w3schools.com/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+          <a href="https://www.w3schools.com/" target="_blank" class="link-row">
             <span>W3Schools</span>
             <span class="arrow">↗</span>
           </a>
-          <a href="https://github.com/" target="_blank" class="link-row" style="color:inherit; text-decoration:none;">
+          <a href="https://github.com/" target="_blank" class="link-row">
             <span>GitHub</span>
             <span class="arrow">↗</span>
           </a>
@@ -107,21 +107,10 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+      <p>© 2026 Umut AKSOY — Web Programlama Dersi</p>
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const labSelector = document.getElementById('labSelector');
-      if (labSelector) {
-        labSelector.addEventListener('change', function() {
-          if (this.value) {
-            window.location.href = `lab${this.value}.html`;
-          }
-        });
-      }
-    });
-  </script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

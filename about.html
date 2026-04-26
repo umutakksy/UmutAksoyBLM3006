@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hakkımda — Abdullah Görgen</title>
+  <title>Hakkımda — Umut AKSOY</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="nav-logo">AG<span>.</span></a>
+      <a href="index.html" class="nav-logo">UA<span>.</span></a>
       <ul class="nav-links">
         <li><a href="index.html">Ana Sayfa</a></li>
         <li><a href="about.html" class="active">Hakkımda</a></li>
@@ -19,7 +19,7 @@
         <li><a href="contact.html">İletişim</a></li>
         <li><a href="contactform.html">Form</a></li>
         <li>
-          <select id="labSelector" style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 0.9rem; cursor: pointer; margin-left: 10px;">
+          <select id="labSelector" class="lab-selector">
             <option value="" selected disabled>Lab Seçiniz</option>
             <option value="2">Lab 2</option>
             <option value="3">Lab 3</option>
@@ -46,7 +46,7 @@
     <div class="container">
       <div class="card">
         <h2>Kendimden Kısaca</h2>
-        <p>Merhaba, ben Abdullah Görgen. Marmara Üniversitesi Bilgisayar Mühendisliği bölümünde eğitimime devam ediyorum. Teknolojiye olan ilgim beni her gün yeni şeyler öğrenmeye teşvik ediyor.</p>
+        <p>Merhaba, ben Umut AKSOY. Marmara Üniversitesi Bilgisayar Mühendisliği bölümünde eğitimime devam ediyorum. Teknolojiye olan ilgim beni her gün yeni şeyler öğrenmeye teşvik ediyor.</p>
         <p>Yazılım dünyasında kendimi geliştirmeyi, temiz ve modüler kodlar yazarak kullanışlı sistemler tasarlamayı hedefliyorum. Derin öğrenme ve siber güvenlik odaklandığım başlıca alanlar arasında yer alıyor.</p>
         
         <h2 style="margin-top: 2rem;">Eğitim</h2>
@@ -66,22 +66,10 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 Abdullah Görgen — Web Programlama Dersi</p>
+      <p>© 2026 Umut AKSOY — Web Programlama Dersi</p>
     </div>
   </footer>
 
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const labSelector = document.getElementById('labSelector');
-      if (labSelector) {
-        labSelector.addEventListener('change', function() {
-          if (this.value) {
-            window.location.href = `lab${this.value}.html`;
-          }
-        });
-      }
-    });
-  </script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
